@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import useCheckImageSizes from '../hooks/useCheckImageSizes';
 
 const RecipeOverview = () => {
   const [recipes, setRecipes] = useState([]);
@@ -10,6 +11,8 @@ const RecipeOverview = () => {
       .then(response => setRecipes(response.data))
       .catch(error => console.error(error));
   }, []);
+
+  useCheckImageSizes(); // Use custom hook to check image sizes
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
